@@ -1,0 +1,14 @@
+{
+  "name": "rrules",
+  "version": "1.0.0",
+  "description": "Venmo business-rules ported to Typescript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joshua Reeter",
+  "license": "ISC",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}
