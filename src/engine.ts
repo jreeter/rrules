@@ -32,8 +32,9 @@ function run(rule: Rule, definedVariables: any, definedActions: BaseActions): bo
 function check_conditions(conditions: Conditions, definedVariables: any): boolean {
     
     let keys = Object.keys(conditions);
-    if(keys.length < 1) throw new Error('Conditions must contain an all or any.');
-    if(keys.length > 1) throw new Error('Too many condition fields, may only have any or all.');
+
+    if(keys.length != 1) 
+        throw new Error('Conditions not well defined.');
 
     if (keys[0] == 'any') {
         for(let condition of conditions.any ?? []) {
@@ -58,7 +59,8 @@ function checkCondition(condition: Condition, definedVariables: any): boolean {
 
     let metadata = definedVariables.getAllVariables().find((p: { propertyKey: string }) => p.propertyKey === condition.name);
 
-    if (!metadata) throw new Error (('Condition name does not exist in metadata/defined variables.'))
+    if (!metadata) 
+        throw new Error(`Property name: ${condition.name} does not exist in metadata/defined variables.`);
 
     // Get the value from the class.
     let value = definedVariables[metadata.propertyKey]();
@@ -67,6 +69,7 @@ function checkCondition(condition: Condition, definedVariables: any): boolean {
     let fieldTypeInstance = new metadata.fieldType(value);
 
     // Compare the condition value to the object value via the operator class method.
+    // TODO make sure the condition operator is available on the fieldTypeInstance
     let result = fieldTypeInstance[condition.operator](condition.value);
 
     return result;

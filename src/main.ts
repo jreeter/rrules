@@ -1,7 +1,7 @@
 import { BaseVariables, ruleVariable } from "./variables";
-import { StringType, BaseType } from "./operators";
+import { StringType } from "./operators";
 import { BaseActions, ruleAction } from "./actions";
-import { FieldType } from "./field-type";
+import { ParameterType } from "./parameter-type";
 import { runAll, Rule } from "./engine";
 import Product from './models/Product';
 
@@ -24,7 +24,7 @@ class ProductActions extends BaseActions {
         super();
     }
 
-    @ruleAction({name: FieldType.STRING})
+    @ruleAction({name: ParameterType.STRING}, 'Sets the product name.')
     setProductName(name: string) {
         this.product.name = name;
     }
@@ -52,3 +52,4 @@ let rules: [Rule] = [{
 
 let result: boolean = runAll(rules, pv, pa)
 
+console.log(p.name);

@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { FieldType } from './field-type';
+import { ParameterType } from './parameter-type';
 
 export abstract class BaseActions {
     /**
@@ -15,7 +15,7 @@ export abstract class BaseActions {
 }
 
 interface ActionParameters {
-    [key: string]: FieldType
+    [key: string]: ParameterType
 }
 
 export const ruleAction = function(params: ActionParameters, label?: string) {

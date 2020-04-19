@@ -1,4 +1,4 @@
-export enum FieldType {
+export enum ParameterType {
     STRING = 'string',
     NUMBER = 'number'
 }

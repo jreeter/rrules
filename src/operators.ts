@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { FieldType } from './field-type';
+import { ParameterType } from './parameter-type';
 
 export abstract class BaseType {
     /**
@@ -15,7 +15,7 @@ export abstract class BaseType {
 
 }
 
-export const typeOperator = function(type: FieldType, label?: string) {
+export const typeOperator = function(type: ParameterType, label?: string) {
     return function(target: any, propertyKey: string, propertyDescriptor: PropertyDescriptor) {
         Reflect.defineMetadata(propertyKey, {isOperator: true, type: type, propertyKey: propertyKey, label: label || propertyKey}, target);
     }
@@ -23,20 +23,22 @@ export const typeOperator = function(type: FieldType, label?: string) {
 
 export class StringType extends BaseType {
 
-    name: string = "string";
-
     constructor(public value?: string) {
         super();
     }
     
-    @typeOperator(FieldType.STRING)
+    @typeOperator(ParameterType.STRING)
     equalTo(otherValue: string) {
         return this.value === otherValue;
     }
 
-    @typeOperator(FieldType.STRING)
+    @typeOperator(ParameterType.STRING)
     doesNotEqual(value: string) {
         return this.value !== value;
     }
-
+    
+    @typeOperator(ParameterType.STRING)
+    contains(value: string) {
+        return this.value?.includes(value);
+    }
 }
