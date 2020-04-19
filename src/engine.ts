@@ -23,13 +23,13 @@ interface Action {
 }
 
 function run(rule: Rule, definedVariables: any, definedActions: BaseActions): boolean {
-    let rule_triggered = check_conditions(rule.conditions, definedVariables);
+    let rule_triggered = checkConditions(rule.conditions, definedVariables);
     if (rule_triggered) 
         doActions(rule.actions, definedActions);
     return rule_triggered;
 }
 
-function check_conditions(conditions: Conditions, definedVariables: any): boolean {
+function checkConditions(conditions: Conditions, definedVariables: any): boolean {
     
     let keys = Object.keys(conditions);
 
