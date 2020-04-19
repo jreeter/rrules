@@ -4,11 +4,21 @@
   "description": "Venmo business-rules ported to Typescript.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -require ts-node/register -colors tests/**/*.ts",
+    "coverage": "nyc npm run test"
   },
   "author": "Joshua Reeter",
   "license": "ISC",
   "dependencies": {
     "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.1",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
   }
 }

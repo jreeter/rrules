@@ -3,8 +3,7 @@ import { ParameterType } from './parameter-type';
 
 export abstract class BaseActions {
     /**
-     * Returns the methods and their metadata annotated by the @typeOperator
-     * for classes that extend BaseType.
+     * Returns all members annotated with @ruleAction.
      */
     getAllActions() {
         let  metadataKeys: string[] = Reflect.getMetadataKeys(this);
