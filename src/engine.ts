@@ -33,7 +33,7 @@ function checkConditions(conditions: Conditions, definedVariables: any): boolean
     
     let keys = Object.keys(conditions);
 
-    if(keys.length != 1) 
+    if(keys.length != 1 || (keys[0] != 'any' && keys[0] != 'all')) 
         throw new Error('Conditions not well defined.');
 
     if (keys[0] == 'any') {
