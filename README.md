@@ -7,10 +7,7 @@ A simple rules engine ported to Typescript from venmo/business-rules(https://git
 
 ```ts
 class Test {
-    name: string;
-    
-    constructor(name: string) {
-        this.name = name;
+    constructor(public name: string) {
     }
 }
 
@@ -62,3 +59,8 @@ let test = new Test('Test');
 let result = runAll(rules, new TestVariables(test), new TestActions(test));
 test.name == 'Hello World' // true!
 ```
+
+# Testing
+`npm run test`
+
+`npm run coverage`
